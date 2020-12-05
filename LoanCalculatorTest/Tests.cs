@@ -20,48 +20,48 @@ namespace LoanCalculatorTests
             {
                 new PaybackPlan()
                 {
-                    PaybackDate=DateTime.Now.AddMonths(1).Date.ToString("yyyy-MM-dd"),
-                    MonthlyPayAmount = 458.25,
-                    MonthlyPayInterest = 87.5,
-                    MonthlyPayTotal = 545.75,
-                    OutstandingDebt = 29541.75
+                    paybackDate=DateTime.Now.AddMonths(1).Date.ToString("yyyy-MM-dd"),
+                    monthlyPayAmount = 458.25,
+                    monthlyPayInterest = 87.5,
+                    monthlyPayTotal = 545.75,
+                    outstandingDebt = 29541.75
                 },
                 new PaybackPlan()
                 {
-                    PaybackDate=DateTime.Now.AddMonths(10).Date.ToString("yyyy-MM-dd"),
-                    MonthlyPayAmount = 470.42,
-                    MonthlyPayInterest = 75.33,
-                    MonthlyPayTotal = 545.75,
-                    OutstandingDebt = 25356.88
+                    paybackDate=DateTime.Now.AddMonths(10).Date.ToString("yyyy-MM-dd"),
+                    monthlyPayAmount = 470.42,
+                    monthlyPayInterest = 75.33,
+                    monthlyPayTotal = 545.75,
+                    outstandingDebt = 25356.88
                 },
                 new PaybackPlan()
                 {
-                    PaybackDate=DateTime.Now.AddMonths(years*12).Date.ToString("yyyy-MM-dd"),
-                    MonthlyPayAmount = 544.21,
-                    MonthlyPayInterest = 1.59,
-                    MonthlyPayTotal = 545.8,
-                    OutstandingDebt = 0
+                    paybackDate=DateTime.Now.AddMonths(years*12).Date.ToString("yyyy-MM-dd"),
+                    monthlyPayAmount = 544.21,
+                    monthlyPayInterest = 1.59,
+                    monthlyPayTotal = 545.8,
+                    outstandingDebt = 0
                 }
             };
 
             IList<PaybackPlan> res = HelperMethods.EMICalculator(interest, years, loanAmount);
-            Assert.AreEqual(res[0].PaybackDate, Payplan_expected[0].PaybackDate);
-            Assert.AreEqual(res[0].MonthlyPayAmount, Payplan_expected[0].MonthlyPayAmount);
-            Assert.AreEqual(res[0].MonthlyPayInterest, Payplan_expected[0].MonthlyPayInterest);
-            Assert.AreEqual(res[0].MonthlyPayTotal, Payplan_expected[0].MonthlyPayTotal);
-            Assert.AreEqual(res[0].OutstandingDebt, Payplan_expected[0].OutstandingDebt);
+            Assert.AreEqual(res[0].paybackDate, Payplan_expected[0].paybackDate);
+            Assert.AreEqual(res[0].monthlyPayAmount, Payplan_expected[0].monthlyPayAmount);
+            Assert.AreEqual(res[0].monthlyPayInterest, Payplan_expected[0].monthlyPayInterest);
+            Assert.AreEqual(res[0].monthlyPayTotal, Payplan_expected[0].monthlyPayTotal);
+            Assert.AreEqual(res[0].outstandingDebt, Payplan_expected[0].outstandingDebt);
 
-            Assert.AreEqual(res[9].PaybackDate, Payplan_expected[1].PaybackDate);
-            Assert.AreEqual(res[9].MonthlyPayAmount, Payplan_expected[1].MonthlyPayAmount);
-            Assert.AreEqual(res[9].MonthlyPayInterest, Payplan_expected[1].MonthlyPayInterest);
-            Assert.AreEqual(res[9].MonthlyPayTotal, Payplan_expected[1].MonthlyPayTotal);
-            Assert.AreEqual(res[9].OutstandingDebt, Payplan_expected[1].OutstandingDebt);
+            Assert.AreEqual(res[9].paybackDate, Payplan_expected[1].paybackDate);
+            Assert.AreEqual(res[9].monthlyPayAmount, Payplan_expected[1].monthlyPayAmount);
+            Assert.AreEqual(res[9].monthlyPayInterest, Payplan_expected[1].monthlyPayInterest);
+            Assert.AreEqual(res[9].monthlyPayTotal, Payplan_expected[1].monthlyPayTotal);
+            Assert.AreEqual(res[9].outstandingDebt, Payplan_expected[1].outstandingDebt);
 
-            Assert.AreEqual(res[years * 12 - 1].PaybackDate, Payplan_expected[2].PaybackDate);
-            Assert.AreEqual(res[years * 12 - 1].MonthlyPayAmount, Payplan_expected[2].MonthlyPayAmount);
-            Assert.AreEqual(res[years * 12 - 1].MonthlyPayInterest, Payplan_expected[2].MonthlyPayInterest);
-            Assert.AreEqual(res[years * 12 - 1].MonthlyPayTotal, Payplan_expected[2].MonthlyPayTotal);
-            Assert.AreEqual(res[years * 12 - 1].OutstandingDebt, Payplan_expected[2].OutstandingDebt);
+            Assert.AreEqual(res[years * 12 - 1].paybackDate, Payplan_expected[2].paybackDate);
+            Assert.AreEqual(res[years * 12 - 1].monthlyPayAmount, Payplan_expected[2].monthlyPayAmount);
+            Assert.AreEqual(res[years * 12 - 1].monthlyPayInterest, Payplan_expected[2].monthlyPayInterest);
+            Assert.AreEqual(res[years * 12 - 1].monthlyPayTotal, Payplan_expected[2].monthlyPayTotal);
+            Assert.AreEqual(res[years * 12 - 1].outstandingDebt, Payplan_expected[2].outstandingDebt);
 
         }
     }

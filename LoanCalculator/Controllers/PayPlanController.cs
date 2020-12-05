@@ -24,8 +24,8 @@ namespace LoanCalculator.Controllers
         [Route("api/[controller]")]
         public IEnumerable<PaybackPlan> Post([FromBody] Loan loan)
         {
-            loan.calculatorPayment();
-            return loan.PayDetails as IEnumerable<PaybackPlan>;
+            loan.CalculatorPayment();
+            return loan.payDetails as IEnumerable<PaybackPlan>;
 
         }
     }

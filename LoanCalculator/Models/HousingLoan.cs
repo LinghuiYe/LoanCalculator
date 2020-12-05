@@ -12,8 +12,8 @@ namespace LoanCalculator.Models
     {
         public HousingLoan()
         {
-            base.LoanType = (int)Enums.LoanTypeEnum.HousingLoan;
-            base.PaybackSchemeType = Enums.PaybackSchemeEnum.EMI;
+            base.loanType = (int)Enums.LoanTypeEnum.HousingLoan;
+            base.paybackSchemeType = Enums.PaybackSchemeEnum.EMI;
         }
     }
 }

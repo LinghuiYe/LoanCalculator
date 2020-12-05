@@ -7,10 +7,10 @@ namespace LoanCalculator.Models
 {
     public class PaybackPlan
     {
-        public string PaybackDate { get; set; } 
-        public double MonthlyPayAmount { get; set; }    // Instalments
-        public double MonthlyPayInterest { get; set; }  // Interest and changes
-        public double MonthlyPayTotal { get; set; }     //  To pay
-        public double OutstandingDebt { get; set; }
+        public string paybackDate { get; set; } 
+        public double monthlyPayAmount { get; set; }    // Instalments
+        public double monthlyPayInterest { get; set; }  // Interest and changes
+        public double monthlyPayTotal { get; set; }     //  To pay
+        public double outstandingDebt { get; set; }
     }
 }

@@ -8,49 +8,51 @@ namespace LoanCalculator.Utilities
 {
     public static class HelperMethods
     {
-        public static IList<PaybackPlan> EMICalculator(double Interest, int PaybackYears, double LoanAmount)
+        public static IList<PaybackPlan> EMICalculator(double interest, int paybackYears, double loanAmount)
         {
-            IList<PaybackPlan> PayDetails = new List<PaybackPlan>();
+            IList<PaybackPlan> payDetails = new List<PaybackPlan>();
 
-            // monthly Insteres
-            double mIns = Interest / 100 / 12;
+            // monthly Insterest
+            double monthlyInsterest = interest / 100 / 12;
 
-            // Months Num
-            int months = PaybackYears * 12;
+            // Months count
+            int months = paybackYears * 12;
 
-            double pow = Math.Pow(1 + mIns, months);
+            double pow = Math.Pow(1 + monthlyInsterest, months);
 
-            double remains = LoanAmount;
+            // Remain amount
+            double remains = loanAmount;
 
-            double PaybackTotalAmount = (months * LoanAmount * mIns * pow) / (pow - 1);
+            double PaybackTotalAmount = (months * loanAmount * monthlyInsterest * pow) / (pow - 1);
             PaybackTotalAmount = Math.Floor(PaybackTotalAmount * 100 + 0.5) / 100;
-
-            double TotalInterests = PaybackTotalAmount - LoanAmount;
-            TotalInterests = Math.Floor(TotalInterests * 100 + 0.5) / 100;
 
             for (int i = 0; i < months; i++)
             {
-                PaybackPlan pp = new PaybackPlan();
-                pp.PaybackDate = DateTime.Now.AddMonths(i + 1).Date.ToString("yyyy-MM-dd");
+                PaybackPlan paybackPlan = new PaybackPlan();
+                paybackPlan.paybackDate = DateTime.Now.AddMonths(i + 1).Date.ToString("yyyy-MM-dd");
+                
+                // Calculate the last month's payment seperately because of deviation.
                 if (i == months - 1)
                 {
-                    pp.MonthlyPayAmount = Math.Floor(remains * 100 + 0.5) / 100;
-                    pp.MonthlyPayInterest = Math.Floor(remains * mIns * 100 + 0.5) / 100;
-                    pp.MonthlyPayTotal = Math.Floor((remains + remains * mIns) * 100 + 0.5) / 100;
-                    pp.OutstandingDebt = 0;
+                    // keep two decimal places
+                    paybackPlan.monthlyPayAmount = Math.Floor(remains * 100 + 0.5) / 100;
+                    paybackPlan.monthlyPayInterest = Math.Floor(remains * monthlyInsterest * 100 + 0.5) / 100;
+                    paybackPlan.monthlyPayTotal = Math.Floor((remains + remains * monthlyInsterest) * 100 + 0.5) / 100;
+                    paybackPlan.outstandingDebt = 0;
                 }
                 else 
                 {
-                    pp.MonthlyPayInterest = Math.Floor(remains * mIns * 100 + 0.5) / 100;
-                    pp.MonthlyPayTotal = Math.Floor(PaybackTotalAmount / months * 100 + 0.5) / 100;
-                    pp.MonthlyPayAmount = Math.Floor((PaybackTotalAmount / months - remains * mIns) * 100 + 0.5) / 100;
-                    pp.OutstandingDebt = Math.Floor((remains + remains * mIns - (PaybackTotalAmount / months)) * 100 + 0.5) / 100;
+                    paybackPlan.monthlyPayInterest = Math.Floor(remains * monthlyInsterest * 100 + 0.5) / 100;
+                    paybackPlan.monthlyPayTotal = Math.Floor(PaybackTotalAmount / months * 100 + 0.5) / 100;
+                    paybackPlan.monthlyPayAmount = Math.Floor((PaybackTotalAmount / months - remains * monthlyInsterest) * 100 + 0.5) / 100;
+                    paybackPlan.outstandingDebt = Math.Floor((remains + remains * monthlyInsterest - (PaybackTotalAmount / months)) * 100 + 0.5) / 100;
                 }
-                remains -= pp.MonthlyPayAmount;
-                PayDetails.Add(pp);
+
+                remains -= paybackPlan.monthlyPayAmount;
+                payDetails.Add(paybackPlan);
             }
 
-            return PayDetails;
+            return payDetails;
         }
     
         

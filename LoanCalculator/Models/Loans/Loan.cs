@@ -11,18 +11,15 @@ namespace LoanCalculator.Loans
 {
     public class Loan: IPaybackScheme
     {
-        public int LoanType { get; set; }
-        public Enums.PaybackSchemeEnum PaybackSchemeType { get; set; }
-        public double Interest { get; set; } //annual Interest
-        public int PaybackYears { get; set; }
-        public double LoanAmount { get; set; }
-        public double PaybackTotalAmount { get; set; }
-        public double TotalInterests { get; set; }
-        public IList<PaybackPlan> PayDetails { get; set; }
+        public int loanType { get; set; }
+        public Enums.PaybackSchemeEnum paybackSchemeType { get; set; }
+        public int paybackYears { get; set; }
+        public double loanAmount { get; set; }
+        public IList<PaybackPlan> payDetails { get; set; }
 
-        public virtual void calculatorPayment()
+        public virtual void CalculatorPayment()
         {
-            switch (PaybackSchemeType)
+            switch (paybackSchemeType)
             {
                 case Enums.PaybackSchemeEnum.EMI:
                     EqualPrincipalandInterestMethod();
@@ -35,8 +32,11 @@ namespace LoanCalculator.Loans
 
         public void EqualPrincipalandInterestMethod()
         {
-            var rate = Global.loadTypes.Where(item => item.id == LoanType).ToList()[0].value;
-            this.PayDetails = HelperMethods.EMICalculator(rate, PaybackYears, LoanAmount);
+            var loadTypesList = Global.loadTypes.Where(item => item.id == loanType).ToList();
+            if (loadTypesList.Count > 0) 
+            {
+                this.payDetails = HelperMethods.EMICalculator(loadTypesList[0].value, paybackYears, loanAmount);
+            }
         }
 
         public void EqualPrincipalMethod()

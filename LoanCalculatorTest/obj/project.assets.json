@@ -5955,19 +5955,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\a01423\\.nuget\\packages\\": {}
+    "C:\\Users\\linghui.ye\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ntuser\\development\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
+      "projectUniqueName": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
       "projectName": "LoanCalculatorTest",
-      "projectPath": "C:\\ntuser\\development\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
-      "packagesPath": "C:\\Users\\a01423\\.nuget\\packages\\",
-      "outputPath": "C:\\ntuser\\development\\LoanCalculator\\LoanCalculatorTest\\obj\\",
+      "projectPath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
+      "packagesPath": "C:\\Users\\linghui.ye\\.nuget\\packages\\",
+      "outputPath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\a01423\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\linghui.ye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5981,8 +5985,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\ntuser\\development\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj": {
-              "projectPath": "C:\\ntuser\\development\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj"
+            "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj": {
+              "projectPath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj"
             }
           }
         }
