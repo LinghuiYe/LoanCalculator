@@ -36,7 +36,7 @@ namespace LoanCalculator.Loans
         public void EqualPrincipalandInterestMethod()
         {
             var rate = Global.loadTypes.Where(item => item.id == LoanType).ToList()[0].value;
-            this.PayDetails = HelpMethods.EMICalculator(rate, PaybackYears, LoanAmount);
+            this.PayDetails = HelperMethods.EMICalculator(rate, PaybackYears, LoanAmount);
         }
 
         public void EqualPrincipalMethod()

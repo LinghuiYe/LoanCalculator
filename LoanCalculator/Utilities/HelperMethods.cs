@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanCalculator.Utilities
 {
-    public static class HelpMethods
+    public static class HelperMethods
     {
         public static IList<PaybackPlan> EMICalculator(double Interest, int PaybackYears, double LoanAmount)
         {
@@ -39,12 +39,13 @@ namespace LoanCalculator.Utilities
                     pp.MonthlyPayTotal = Math.Floor((remains + remains * mIns) * 100 + 0.5) / 100;
                     pp.OutstandingDebt = 0;
                 }
-
-                pp.MonthlyPayInterest = Math.Floor(remains * mIns * 100 + 0.5) / 100;
-                pp.MonthlyPayTotal = Math.Floor(PaybackTotalAmount / months * 100 + 0.5) / 100;
-                pp.MonthlyPayAmount = Math.Floor((PaybackTotalAmount / months - remains * mIns) * 100 + 0.5) / 100;
-                pp.OutstandingDebt = Math.Floor((remains + remains * mIns -(PaybackTotalAmount / months)) * 100 + 0.5) / 100;
-
+                else 
+                {
+                    pp.MonthlyPayInterest = Math.Floor(remains * mIns * 100 + 0.5) / 100;
+                    pp.MonthlyPayTotal = Math.Floor(PaybackTotalAmount / months * 100 + 0.5) / 100;
+                    pp.MonthlyPayAmount = Math.Floor((PaybackTotalAmount / months - remains * mIns) * 100 + 0.5) / 100;
+                    pp.OutstandingDebt = Math.Floor((remains + remains * mIns - (PaybackTotalAmount / months)) * 100 + 0.5) / 100;
+                }
                 remains -= pp.MonthlyPayAmount;
                 PayDetails.Add(pp);
             }
