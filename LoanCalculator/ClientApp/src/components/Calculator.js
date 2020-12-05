@@ -1,5 +1,4 @@
 ﻿import React, { useState, useEffect } from 'react';
-import Result from './Result';
 import PaybackPlan from './PaybackPlan';
 import './Calculator.css';
 
@@ -7,13 +6,14 @@ const Calculator = () => {
 
     const [amount, setAmount] = useState(0);
     const [interest, setInterest] = useState(0);
+    const [loanTypeId, setLoanTypeId] = useState(0);
     const [paybackTime, setPaybackTime] = useState(0);
     const [errorMessage, setErrorMessage] = useState(null);
     const [loanTypes, setLoanTypes] = useState([]);
 
     useEffect(() => {
         async function getLoans() {
-            const response = await fetch('api/loans');
+            const response = await fetch('api/loantype');
             const data = await response.json();
             setLoanTypes(data);
         }
@@ -40,9 +40,10 @@ const Calculator = () => {
 
     const handleSelect = event => {
         const type = event.target.value;
-        const loanType = loanTypes.find(e => e.interestType === type);
+        const loanType = loanTypes.find(e => e.name === type);
         if (loanType) {
-            setInterest(loanType.interest);
+            setInterest(loanType.value);
+            setLoanTypeId(loanType.id);
         } else {
             setInterest(null);
         }
@@ -59,8 +60,8 @@ const Calculator = () => {
                 <select onChange={handleSelect}>
                     <option>Velg</option>
                     {
-                        loanTypes.map(loanType => {
-                            return <option>{loanType.interestType}</option>
+                        loanTypes.map((loanType, index) => {
+                            return <option key={index}>{loanType.name}</option>
                         })
                     }
                 </select>
@@ -73,9 +74,7 @@ const Calculator = () => {
                 <input name="paybackTimeInput" type="text" onBlur={handlePaybackTimeChange} onChange={handleValue} />
             </div>
             <label>{errorMessage}</label>
-
-            <Result totalAmount={Number(amount)} interest={Number(interest)} paybackTime={Number(paybackTime)} />
-            <PaybackPlan totalAmount={Number(amount)} interest={Number(interest)} paybackTime={Number(paybackTime)} />
+            <PaybackPlan totalAmount={Number(amount)} loanTypeId={Number(loanTypeId)} paybackTime={Number(paybackTime)} />
         </div>
     );
 

@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace LoanCalculator
+namespace LoanCalculator.Models
 {
     public class PaybackPlan
     {
-        public DateTime PaybackDate { get; set; }
-        public double Amount { get; set; }
-        public double InterestFee { get; set; }
-        public double Deduction { get; set; }
-        public double RestDebt { get; set; }
+        public string PaybackDate { get; set; } 
+        public double MonthlyPayAmount { get; set; }    // Instalments
+        public double MonthlyPayInterest { get; set; }  // Interest and changes
+        public double MonthlyPayTotal { get; set; }     //  To pay
+        public double OutstandingDebt { get; set; }
     }
 }

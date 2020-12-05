@@ -4,33 +4,35 @@ import './PaybackPlan.css';
 
 const PaybackPlan = ({
     totalAmount,
-    interest,
+    loanTypeId,
     paybackTime,
 }) => {
 
     const [plan, setPlan] = useState([]);
 
     useEffect(() => {
-        if (totalAmount > 0 && interest > 0 && paybackTime > 0) {
+        if (totalAmount > 0 && loanTypeId > 0 && paybackTime > 0) {
             async function getPaybackPlan() {
-                const response = await fetch('api/loans/plan', {
+                const response = await fetch('api/payplan', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ Amount: totalAmount, Interest: interest, PaybackTime: paybackTime })
+                    body: JSON.stringify({ LoanAmount: totalAmount, LoanType: loanTypeId, PaybackYears: paybackTime })
                 });
-                console.log(response);
                 const data = await response.json();
                 setPlan(data);
             }
             getPaybackPlan();
         }
-    }, [totalAmount, interest, paybackTime]);
+    }, [totalAmount, loanTypeId, paybackTime]);
 
     return (
         <div>
+            <div className="result">
+                <h1>Du må betale <span className="text">{plan[0]?.monthlyPayTotal}</span> kr/mnd</h1>
+            </div>
             <h1>Nedbetalingsplan</h1>
             <div className="planContainer">
             <table className='table table-striped' aria-labelledby="tabelLabel">
@@ -38,17 +40,19 @@ const PaybackPlan = ({
                     <tr>
                         <th>Dato</th>
                         <th>Beløp</th>
-                        <th>Avgift</th>
+                        <th>Renter</th>
+                        <th>Å betale</th>
                         <th>Restgjelder</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {plan.map(p =>
-                        <tr key={p.paybackDate}>
+                    {plan.map((p, index) =>
+                        <tr key={index}>
                             <td>{p.paybackDate}</td>
-                            <td>{p.amount}</td>
-                            <td>{p.interestFee}</td>
-                            <td>{p.restDebt}</td>
+                            <td>{p.monthlyPayAmount}</td>
+                            <td>{p.monthlyPayInterest}</td>
+                            <td>{p.monthlyPayTotal}</td>
+                            <td>{p.outstandingDebt}</td>
                         </tr>
                     )}
                 </tbody>
@@ -60,7 +64,7 @@ const PaybackPlan = ({
 
 PaybackPlan.propTypes = {
     totalAmount: PropTypes.number,
-    interest: PropTypes.number,
+    loanTypeId: PropTypes.number,
     paybackTime: PropTypes.number,
 };
 
