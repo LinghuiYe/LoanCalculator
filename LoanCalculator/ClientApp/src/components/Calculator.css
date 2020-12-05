@@ -1,0 +1,8 @@
+﻿.amount, .interest, .paybackTime {
+    margin: 20px 0 20px 0;
+}
+
+.text {
+    color: red;
+    font-weight: bold;
+}
