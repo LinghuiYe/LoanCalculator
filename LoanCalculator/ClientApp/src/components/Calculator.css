@@ -1,8 +1,13 @@
-﻿.amount, .interest, .paybackTime {
+﻿.loanAmount, .interest, .paybackYears {
     margin: 20px 0 20px 0;
 }
 
 .text {
+    color: blue;
+    font-weight: bold;
+}
+
+.errorMsg {
     color: red;
     font-weight: bold;
 }

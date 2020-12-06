@@ -8,7 +8,7 @@ import './PaybackPlan.css';
 const PaybackPlan = ({
     totalAmount,
     loanTypeId,
-    paybackTime,
+    paybackYears,
 }) => {
 
     /** Use states for payback plans. */
@@ -16,7 +16,7 @@ const PaybackPlan = ({
 
     /** Call API to get an array of payback plans. */
     useEffect(() => {
-        if (totalAmount > 0 && loanTypeId > 0 && paybackTime > 0) {
+        if (totalAmount > 0 && loanTypeId > 0 && paybackYears > 0) {
             async function getPaybackPlan() {
                 const response = await fetch('api/payplan', {
                     method: 'POST',
@@ -24,14 +24,17 @@ const PaybackPlan = ({
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ LoanAmount: totalAmount, LoanType: loanTypeId, PaybackYears: paybackTime })
+                    body: JSON.stringify({ LoanAmount: totalAmount, LoanType: loanTypeId, PaybackYears: paybackYears })
                 });
                 const data = await response.json();
                 setPlan(data);
             }
             getPaybackPlan();
         }
-    }, [totalAmount, loanTypeId, paybackTime]);
+        else {
+            setPlan([])
+        }
+    }, [totalAmount, loanTypeId, paybackYears]);
 
     return (
         <div>

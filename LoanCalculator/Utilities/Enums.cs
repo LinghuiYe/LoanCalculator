@@ -16,8 +16,8 @@ namespace LoanCalculator.Utilities
 
         public enum PaybackSchemeEnum
         {
-            EMI,    // Equaled Monthly Installment
-            EM      // 
+            EMI,    // Equal principal and interest
+            EM      // Equal Principal
         };
     }
 }

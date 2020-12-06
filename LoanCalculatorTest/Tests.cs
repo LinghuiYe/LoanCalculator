@@ -16,7 +16,7 @@ namespace LoanCalculatorTests
             int years = 5;
             double loanAmount = 30000;
 
-            IList<PaybackPlan> Payplan_expected = new List<PaybackPlan>()
+            IList<PaybackPlan> payPlanExpected = new List<PaybackPlan>()
             {
                 new PaybackPlan()
                 {
@@ -44,24 +44,25 @@ namespace LoanCalculatorTests
                 }
             };
 
-            IList<PaybackPlan> res = HelperMethods.EMICalculator(interest, years, loanAmount);
-            Assert.AreEqual(res[0].paybackDate, Payplan_expected[0].paybackDate);
-            Assert.AreEqual(res[0].monthlyPayAmount, Payplan_expected[0].monthlyPayAmount);
-            Assert.AreEqual(res[0].monthlyPayInterest, Payplan_expected[0].monthlyPayInterest);
-            Assert.AreEqual(res[0].monthlyPayTotal, Payplan_expected[0].monthlyPayTotal);
-            Assert.AreEqual(res[0].outstandingDebt, Payplan_expected[0].outstandingDebt);
+            IList<PaybackPlan> payPlanRes = HelperMethods.EMICalculator(interest, years, loanAmount);
 
-            Assert.AreEqual(res[9].paybackDate, Payplan_expected[1].paybackDate);
-            Assert.AreEqual(res[9].monthlyPayAmount, Payplan_expected[1].monthlyPayAmount);
-            Assert.AreEqual(res[9].monthlyPayInterest, Payplan_expected[1].monthlyPayInterest);
-            Assert.AreEqual(res[9].monthlyPayTotal, Payplan_expected[1].monthlyPayTotal);
-            Assert.AreEqual(res[9].outstandingDebt, Payplan_expected[1].outstandingDebt);
+            Assert.AreEqual(payPlanRes[0].paybackDate, payPlanExpected[0].paybackDate);
+            Assert.AreEqual(payPlanRes[0].monthlyPayAmount, payPlanExpected[0].monthlyPayAmount);
+            Assert.AreEqual(payPlanRes[0].monthlyPayInterest, payPlanExpected[0].monthlyPayInterest);
+            Assert.AreEqual(payPlanRes[0].monthlyPayTotal, payPlanExpected[0].monthlyPayTotal);
+            Assert.AreEqual(payPlanRes[0].outstandingDebt, payPlanExpected[0].outstandingDebt);
 
-            Assert.AreEqual(res[years * 12 - 1].paybackDate, Payplan_expected[2].paybackDate);
-            Assert.AreEqual(res[years * 12 - 1].monthlyPayAmount, Payplan_expected[2].monthlyPayAmount);
-            Assert.AreEqual(res[years * 12 - 1].monthlyPayInterest, Payplan_expected[2].monthlyPayInterest);
-            Assert.AreEqual(res[years * 12 - 1].monthlyPayTotal, Payplan_expected[2].monthlyPayTotal);
-            Assert.AreEqual(res[years * 12 - 1].outstandingDebt, Payplan_expected[2].outstandingDebt);
+            Assert.AreEqual(payPlanRes[9].paybackDate, payPlanExpected[1].paybackDate);
+            Assert.AreEqual(payPlanRes[9].monthlyPayAmount, payPlanExpected[1].monthlyPayAmount);
+            Assert.AreEqual(payPlanRes[9].monthlyPayInterest, payPlanExpected[1].monthlyPayInterest);
+            Assert.AreEqual(payPlanRes[9].monthlyPayTotal, payPlanExpected[1].monthlyPayTotal);
+            Assert.AreEqual(payPlanRes[9].outstandingDebt, payPlanExpected[1].outstandingDebt);
+
+            Assert.AreEqual(payPlanRes[years * 12 - 1].paybackDate, payPlanExpected[2].paybackDate);
+            Assert.AreEqual(payPlanRes[years * 12 - 1].monthlyPayAmount, payPlanExpected[2].monthlyPayAmount);
+            Assert.AreEqual(payPlanRes[years * 12 - 1].monthlyPayInterest, payPlanExpected[2].monthlyPayInterest);
+            Assert.AreEqual(payPlanRes[years * 12 - 1].monthlyPayTotal, payPlanExpected[2].monthlyPayTotal);
+            Assert.AreEqual(payPlanRes[years * 12 - 1].outstandingDebt, payPlanExpected[2].outstandingDebt);
 
         }
     }

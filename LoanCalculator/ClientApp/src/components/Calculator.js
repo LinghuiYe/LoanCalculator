@@ -8,10 +8,10 @@ import './Calculator.css';
 const Calculator = () => {
 
     /** Use states for client input such as amount, interest, etc. */
-    const [amount, setAmount] = useState(0);
+    const [loanAmount, setLoanAmount] = useState(0);
     const [interest, setInterest] = useState(0);
     const [loanTypeId, setLoanTypeId] = useState(0);
-    const [paybackTime, setPaybackTime] = useState(0);
+    const [paybackYears, setPaybackYears] = useState(0);
     const [errorMessage, setErrorMessage] = useState(null);
     const [loanTypes, setLoanTypes] = useState([]);
 
@@ -25,26 +25,29 @@ const Calculator = () => {
         getLoans();
     }, []);
 
-    /** Handling input value for amount. */
-    const handleAmountChange = event => {
+    /** Handling input value for loan amount. */
+    const handleLoanAmountChange = event => {
         const amountInput = event.target.value;
         if (!isNaN(amountInput)) {
-            setAmount(amountInput);
+            setLoanAmount(amountInput);
         }
     };
 
-    /** Handling input value for payback time. */
-    const handlePaybackTimeChange = event => {
-        const paybackTimeInput = event.target.value;
-        if (!isNaN(paybackTimeInput)) {
-            setPaybackTime(paybackTimeInput);
+    /** Handling input value for payback years. */
+    const handlePaybackYearsChange = event => {
+        const paybackYearsInput = event.target.value;
+        if (!isNaN(paybackYearsInput)) {
+            setPaybackYears(paybackYearsInput);
         }
     };
 
     /** Handling values from inputs, show error message if input is invalid. */
     const handleValue = event => {
-        isNaN(event.target.value) ? setErrorMessage('Ugyldig verdi!') : setErrorMessage(null);
+        isNaN(event.target.value) || Number(event.target.value) <= 0
+            ? setErrorMessage('Ugyldig verdi!')
+            : setErrorMessage(null);
     };
+
 
     /** Handling select value for loan type. */
     const handleSelect = event => {
@@ -55,15 +58,16 @@ const Calculator = () => {
             setLoanTypeId(loanType.id);
         } else {
             setInterest(null);
+            setLoanTypeId(0);
         }
     };
 
     return (
         <div>
             {/** Inputs from client. */}
-            <div className="amount">
+            <div className="loanAmount">
                 <h1>Ønsket lånebeløp</h1>
-                <input name="loanAmountInput" type="text" onBlur={handleAmountChange} onChange={handleValue} />
+                <input name="loanAmountInput" type="number" onBlur={handleLoanAmountChange} onChange={handleValue} min="1" />
             </div>
             <div className="interest">
                 <h1>Rente</h1>
@@ -79,13 +83,13 @@ const Calculator = () => {
                     <label className="text">{interest}%</label>
                 </div>
             </div>
-            <div className="paybackTime">
+            <div className="paybackYears">
                 <h1>Løpetid</h1>
-                <input name="paybackTimeInput" type="text" onBlur={handlePaybackTimeChange} onChange={handleValue} />
+                <input name="paybackYearsInput" type="number" onBlur={handlePaybackYearsChange} onChange={handleValue} min="1" />
             </div>
-            <label>{errorMessage}</label>
+            <label className="errorMsg">{errorMessage}</label>
             {/** Component to show payback plan with all calculation results. */}
-            <PaybackPlan totalAmount={Number(amount)} loanTypeId={Number(loanTypeId)} paybackTime={Number(paybackTime)} />
+            <PaybackPlan totalAmount={Number(loanAmount)} loanTypeId={Number(loanTypeId)} paybackYears={Number(paybackYears)} />
         </div>
     );
 
