@@ -26,8 +26,14 @@ const PaybackPlan = ({
                     },
                     body: JSON.stringify({ LoanAmount: totalAmount, LoanType: loanTypeId, PaybackYears: paybackYears })
                 });
-                const data = await response.json();
-                setPlan(data);
+                if (response.ok) {
+                    const data = await response.json();
+                    setPlan(data);
+                } else
+                {
+                    alert("HTTP-Error:" + response.status)
+                    setPlan([])
+                }
             }
             getPaybackPlan();
         }
