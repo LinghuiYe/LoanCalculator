@@ -8,7 +8,6 @@ namespace LoanCalculator.Interfaces
 {
     interface IPaybackScheme
     {
-        void EqualPrincipalandInterestMethod();
-        void EqualPrincipalMethod();
+        void CalculatorPayment();
     }
 }

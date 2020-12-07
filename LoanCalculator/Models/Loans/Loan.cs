@@ -41,7 +41,7 @@ namespace LoanCalculator.Loans
 
         public void EqualPrincipalMethod()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

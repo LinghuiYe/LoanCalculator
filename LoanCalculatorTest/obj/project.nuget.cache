@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ug/sC3yJzNSo23sIuTdeSWsOoXsUccAmA5lwz3WpsfotAaFffo9MOUSJldfgVkGPbpQ2AfLjsquu9nrNCAN+pA==",
+  "dgSpecHash": "1Yhiqqe1dwx9VUZEBL2M1XjUne8yNZ3HrsZHrNxODHluK7y9zggFgzzWT3cbkfFY04fChyGtxWXLJi1pOrp0Qg==",
   "success": true,
-  "projectFilePath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
+  "projectFilePath": "C:\\ylh\\job\\Visma\\Programming_task_solution_LinghuiYe\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\linghui.ye\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
     "C:\\Users\\linghui.ye\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\3.1.8\\microsoft.aspnetcore.nodeservices.3.1.8.nupkg.sha512",

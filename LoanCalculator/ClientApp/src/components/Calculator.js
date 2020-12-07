@@ -19,8 +19,16 @@ const Calculator = () => {
     useEffect(() => {
         async function getLoans() {
             const response = await fetch('api/loantype');
-            const data = await response.json();
-            setLoanTypes(data);
+            if (response.ok) {
+                const data = await response.json();
+                setLoanTypes(data);
+            }
+            else
+            {
+                alert("HTTP-Error:" + response.status)
+                setLoanTypes([]);
+            }
+            
         }
         getLoans();
     }, []);

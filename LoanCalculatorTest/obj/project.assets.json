@@ -5961,11 +5961,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
+      "projectUniqueName": "C:\\ylh\\job\\Visma\\Programming_task_solution_LinghuiYe\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
       "projectName": "LoanCalculatorTest",
-      "projectPath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
+      "projectPath": "C:\\ylh\\job\\Visma\\Programming_task_solution_LinghuiYe\\LoanCalculator\\LoanCalculatorTest\\LoanCalculatorTest.csproj",
       "packagesPath": "C:\\Users\\linghui.ye\\.nuget\\packages\\",
-      "outputPath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculatorTest\\obj\\",
+      "outputPath": "C:\\ylh\\job\\Visma\\Programming_task_solution_LinghuiYe\\LoanCalculator\\LoanCalculatorTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5985,8 +5985,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj": {
-              "projectPath": "C:\\ylh\\job\\Visma\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj"
+            "C:\\ylh\\job\\Visma\\Programming_task_solution_LinghuiYe\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj": {
+              "projectPath": "C:\\ylh\\job\\Visma\\Programming_task_solution_LinghuiYe\\LoanCalculator\\LoanCalculator\\LoanCalculator.csproj"
             }
           }
         }
