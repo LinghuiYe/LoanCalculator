@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanCalculator.Interfaces
 {
-    interface IPaybackScheme
+    public interface IPaybackScheme
     {
         void CalculatorPayment();
     }
